@@ -1,0 +1,6 @@
+library
+library.exe
+*.obj
+*.o
+books.txt
+members.txt
