@@ -16,7 +16,7 @@ struct Book {
     int id;
     string title;
     string author;
-    int issuedTo;  // member id, or 0 if the book is on the shelf
+    int issuedTo;  // je member er kase boi ase tar id, boi shelf e thakle 0
 };
 
 struct Member {
@@ -25,20 +25,20 @@ struct Member {
 };
 
 
-// Reads a whole line and makes sure it is not empty.
+// puro line ta pore, faka hole abar jiggesh kore
 string readText(const string& prompt) {
     string text;
     while (true) {
         cout << prompt;
         getline(cin, text);
-        if (!cin) exit(0);  // input closed (Ctrl+Z / Ctrl+D)
-        replace(text.begin(), text.end(), '|', '/');  // '|' separates fields in the files
+        if (!cin) exit(0);  // input bondho hoye gele (Ctrl+Z / Ctrl+D) program sesh
+        replace(text.begin(), text.end(), '|', '/');  // file e '|' diye field alada kori, tai eta input e rakha jabe na
         if (!text.empty()) return text;
         cout << "  Please type something.\n";
     }
 }
 
-// Keeps asking until the user types a valid whole number.
+// thik moto number na deya porjonto bar bar jiggesh kore
 int readNumber(const string& prompt) {
     while (true) {
         string line = readText(prompt);
@@ -61,7 +61,7 @@ string toLower(string text) {
 
 class Library {
 public:
-    // Reads saved data. A damaged line is skipped instead of crashing the program.
+    // save kora data load kore. kono line nosto thakle crash na kore oi line ta skip kore
     void load() {
         ifstream booksIn(BOOKS_FILE);
         string line;
@@ -211,7 +211,7 @@ private:
         return "member " + to_string(id);
     }
 
-    // Counted from the books, so it can never get out of sync.
+    // alada kore count rakhi na, boi er list theke gune ber kori, tai kokhono vul hobe na
     int countBorrowed(int memberId) const {
         int count = 0;
         for (const Book& b : books)
